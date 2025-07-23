@@ -4,8 +4,6 @@ import type {
   CreateSubtaskMutationVariables,
 } from 'types/graphql'
 
-
-
 import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import type { TypedDocumentNode } from '@redwoodjs/web'
@@ -40,9 +38,6 @@ const NewSubtask = ({taskId}) => {
       },
     }
   )
-
-
-
 
   const onSave = (input: CreateSubtaskInput) => {
     createSubtask({ variables: { input } })

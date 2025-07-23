@@ -94,32 +94,28 @@ export default function TasksPage() {
             {/* Task Title + Buttons */}
             <div className="flex items-center justify-between">
               <div
-                className="font-semibold cursor-pointer hover:text-blue-600"
+                className="font-semibold cursor-pointer hover:text-blue-600 text-[25px]"
                 onClick={() => handleRead(task.id)}
-                style={{fontSize:"25px"}}
               >
                 {task.title}{' '}
                 {task.completed && <span className="text-green-600">(Đã xong)</span>}
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2 text-sm text-[20px]">
                 <button
                   onClick={() => handleAddSubTask(task.id)}
                   className="text-blue-600 hover:underline"
-                  style={{fontSize:"20px"}}
                 >
                   + thêm subtask
                 </button>
                 <button
                   onClick={() => handleEdit(task.id)}
-                  className="text-gray-600 hover:underline"
-                  style={{fontSize:"20px"}}
+                  className="text-gray-600 hover:underline text-[20px]"
                 >
                   Sửa
                 </button>
                 <button
                   onClick={() => handleDelete(task.id)}
-                  className="text-red-600 hover:underline"
-                  style={{fontSize:"20px"}}
+                  className="text-red-600 hover:underline text-[20px]"
                 >
                   Xóa
                 </button>
@@ -130,17 +126,15 @@ export default function TasksPage() {
               {task.subtasks.map((sub) => (
                 <div key={sub.id} className="flex items-center justify-between">
                   <span
-                    className="cursor-pointer hover:text-blue-700 text-sm"
+                    className="cursor-pointer hover:text-blue-700 text-sm text-[18px]"
                     onClick={() => handleDetailSub(sub.id)}
-                    style={{fontSize:"18px"}}
                   >
                     * {sub.title} {sub.done ? '(xong)' : ''}
                   </span>
-                  <div className="flex items-center gap-2 text-xs">
+                  <div className="flex items-center gap-2 text-xs text-[18px]">
                     <button
                       onClick={() => handleEditSub(sub.id)}
                       className="text-gray-600 hover:underline"
-                      style={{fontSize:"18px"}}
                     >
                       Chỉnh sửa
                     </button>
@@ -150,8 +144,7 @@ export default function TasksPage() {
                           deleteSubTask({ variables: { id: sub.id } })
                         }
                       }}
-                      className="text-red-600 hover:underline"
-                      style={{fontSize:"18px"}}
+                      className="text-red-600 hover:underline text-[18px]"
                     >
                       Xóa
                     </button>
