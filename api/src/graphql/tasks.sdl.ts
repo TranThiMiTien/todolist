@@ -4,6 +4,7 @@ export const schema = gql`
     title: String!
     completed: Boolean!
     createdAt: DateTime!
+    subtasks: [Subtask!]! # Thêm dòng này
   }
 
   type Query {

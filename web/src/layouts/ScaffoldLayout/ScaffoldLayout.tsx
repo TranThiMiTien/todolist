@@ -14,15 +14,8 @@ const ScaffoldLayout = ({
   titleTo,
   buttonLabel,
   buttonTo,
-  children,
+  children, // route con A or B or C
 }: LayoutProps) => {
-console.log("title:: ",title);
-console.log("titleTo:: ",titleTo);
-console.log("buttonLabel:: ",buttonLabel);
-console.log("buttonTo:: ",buttonTo);
-console.log("children:: ",children);
-
-
   return (
     <div className="rw-scaffold">
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
