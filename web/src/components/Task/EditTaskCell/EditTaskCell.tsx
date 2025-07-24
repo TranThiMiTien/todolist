@@ -64,15 +64,16 @@ export const Success = ({ task }: CellSuccessProps<EditTaskById>) => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">
+    <div>
+      <header>
+        <h2 className=" font-bold text-[18px] text-red-500">
           Edit Task {task?.id}
         </h2>
       </header>
-      <div className="rw-segment-main">
+      <div className="text-[16px]">
         <TaskForm task={task} onSave={onSave} error={error} loading={loading} />
       </div>
     </div>
   )
 }
+

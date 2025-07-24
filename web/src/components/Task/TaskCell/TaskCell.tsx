@@ -16,6 +16,11 @@ export const QUERY: TypedDocumentNode<FindTaskById, FindTaskByIdVariables> =
         title
         completed
         createdAt
+        subtasks {
+          id
+          title
+          done
+      }
       }
     }
   `
@@ -28,7 +33,8 @@ export const Failure = ({ error }: CellFailureProps<FindTaskByIdVariables>) => (
   <div className="rw-cell-error">{error?.message}</div>
 )
 
-export const Success = ({
+export const
+Success = ({
   task,
 }: CellSuccessProps<FindTaskById, FindTaskByIdVariables>) => {
   return <Task task={task} />

@@ -37,41 +37,62 @@ const Task = ({ task }: Props) => {
     },
   })
 
+  console.log("Task:: ",task);
+
+
+
   const onDeleteClick = (id: DeleteTaskMutationVariables['id']) => {
     if (confirm('Are you sure you want to delete task ' + id + '?')) {
       deleteTask({ variables: { id } })
     }
   }
 
+  const handleDetailSub = (id: number) => {
+    navigate(routes.subTask({ id }))
+  }
+
   return (
     <>
       <div className="rw-segment">
         <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
+          <h2 className=" font-bold text-[18px] text-red-500">
             Task {task.id} Detail
           </h2>
         </header>
         <table className="rw-table">
           <tbody>
             <tr>
-              <th>Id</th>
-              <td>{task.id}</td>
+              <th className="text-[18px] text-purple-500">Id</th>
+              <td className="text-[16px]">{task.id}</td>
             </tr>
             <tr>
-              <th>Title</th>
-              <td>{task.title}</td>
+              <th className="text-[18px] text-purple-500">Title</th>
+              <td className="text-[16px]">{task.title}</td>
             </tr>
             <tr>
-              <th>Completed</th>
-              <td>{checkboxInputTag(task.completed)}</td>
+              <th className="text-[18px] text-purple-500">Completed</th>
+              <td className="text-[16px]">{checkboxInputTag(task.completed)}</td>
             </tr>
             <tr>
-              <th>Created at</th>
-              <td>{timeTag(task.createdAt)}</td>
+              <th className="text-[18px] text-purple-500">Created at</th>
+              <td className="text-[16px]">{timeTag(task.createdAt)}</td>
+            </tr>
+            <tr>
+              <th className="text-[18px] text-purple-500">SubTasks: </th>
+              <td>
+                <ul className="text-[16px]">
+                  {task?.subtasks?.map((subTask)=>{
+                    return <li className="mb-1" onClick={()=>handleDetailSub(subTask.id)} key={subTask.id}>- {subTask.title}</li>
+                  })}
+                </ul>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
+
+
+
       <nav className="rw-button-group">
         <Link
           to={routes.editTask({ id: task.id })}

@@ -7,7 +7,13 @@ import type {
 import { db } from 'src/lib/db'
 
 export const subtasks: QueryResolvers['subtasks'] = () => {
-  return db.subtask.findMany()
+  return db.subtask.findMany(
+    {
+      orderBy: {
+        id:'asc'
+      }
+    }
+  )
 }
 
 export const subtask: QueryResolvers['subtask'] = ({ id }) => {

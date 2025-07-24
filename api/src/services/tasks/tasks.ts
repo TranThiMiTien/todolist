@@ -15,6 +15,9 @@ export const tasks: QueryResolvers['tasks'] = () => {
     include: {
       subtasks: true,
     },
+    orderBy: {
+        id:'asc'
+    }
   })
 }
 
@@ -22,6 +25,9 @@ export const tasks: QueryResolvers['tasks'] = () => {
 export const task: QueryResolvers['task'] = ({ id }) => {
   return db.task.findUnique({
     where: { id },
+    include: {
+      subtasks: true,
+    }
   })
 }
 

@@ -94,16 +94,16 @@ export default function TasksPage() {
             {/* Task Title + Buttons */}
             <div className="flex items-center justify-between">
               <div
-                className="font-semibold cursor-pointer hover:text-blue-600 text-[25px]"
+                className="font-semibold cursor-pointer hover:text-pink-300 text-[25px] text-pink-600"
                 onClick={() => handleRead(task.id)}
               >
                 {task.title}{' '}
                 {task.completed && <span className="text-green-600">(Đã xong)</span>}
               </div>
-              <div className="flex items-center gap-2 text-sm text-[20px]">
+              <div className="flex items-center gap-2 text-sm ">
                 <button
                   onClick={() => handleAddSubTask(task.id)}
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 hover:underline text-[20px]"
                 >
                   + thêm subtask
                 </button>
@@ -122,19 +122,19 @@ export default function TasksPage() {
               </div>
             </div>
             {/* Subtasks */}
-            <div className="mt-2 space-y-1 pl-4 border-l border-gray-300">
+            <div className="mt-2 space-y-1 pl-4 border-l border-gray-300 text-[18px]">
               {task.subtasks.map((sub) => (
                 <div key={sub.id} className="flex items-center justify-between">
                   <span
-                    className="cursor-pointer hover:text-blue-700 text-sm text-[18px]"
+                    className="cursor-pointer hover:text-blue-700"
                     onClick={() => handleDetailSub(sub.id)}
                   >
-                    * {sub.title} {sub.done ? '(xong)' : ''}
+                    * {sub.title} {sub.done ? <span className="text-yellow-500">(Hoàn thành)</span>: ''}
                   </span>
-                  <div className="flex items-center gap-2 text-xs text-[18px]">
+                  <div className="flex items-center gap-2 text-xs ">
                     <button
                       onClick={() => handleEditSub(sub.id)}
-                      className="text-gray-600 hover:underline"
+                      className="text-gray-600 hover:underline text-[18px]"
                     >
                       Chỉnh sửa
                     </button>

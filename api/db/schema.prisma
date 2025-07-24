@@ -10,9 +10,7 @@ datasource db {
   url      = env("DATABASE_URL") // ví dụ: postgresql://user:pass@localhost:5432/dbname
 }
 
-// ===============================
 // Model: Task (nhiệm vụ chính)
-// ===============================
 model Task {
   id        Int      @id @default(autoincrement())
   title     String
@@ -23,9 +21,7 @@ model Task {
   subtasks Subtask[]
 }
 
-// ===============================
 // Model: Subtask (việc con)
-// ===============================
 model Subtask {
   id        Int      @id @default(autoincrement())
   title     String
