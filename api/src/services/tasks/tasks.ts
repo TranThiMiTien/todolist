@@ -1,6 +1,6 @@
 // api/src/services/tasks/tasks.ts
 
-import type { QueryResolvers, MutationResolvers } from 'types/graphql'
+import type { QueryResolvers, MutationResolvers, TaskRelationResolvers } from 'types/graphql'
 
 import { db } from 'src/lib/db'
 
@@ -12,9 +12,6 @@ import { db } from 'src/lib/db'
 export const tasks: QueryResolvers['tasks'] = () => {
   // return db.task.findMany()
   return db.task.findMany({
-    include: {
-      subtasks: true,
-    },
     orderBy: {
         id:'asc'
     }
@@ -25,9 +22,6 @@ export const tasks: QueryResolvers['tasks'] = () => {
 export const task: QueryResolvers['task'] = ({ id }) => {
   return db.task.findUnique({
     where: { id },
-    include: {
-      subtasks: true,
-    }
   })
 }
 
@@ -53,3 +47,17 @@ export const deleteTask: MutationResolvers['deleteTask'] = ({ id }) => {
     where: { id },
   })
 }
+
+export const Task: TaskRelationResolvers={
+  subtasks:(_obj, {root })=>{
+    return db.task.findUnique({
+      where: {id:root.id}
+    }).subtasks(
+      {orderBy: {
+        id:'asc'
+        }
+      }
+    )
+  }
+}
+
